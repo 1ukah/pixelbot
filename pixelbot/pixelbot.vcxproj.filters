@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Headers">
+      <UniqueIdentifier>{cec416e4-d0cd-4195-ae9b-e30ba38ebf29}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="pixelbot.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="menu.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="functions.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="inputcontrol.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="utils.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="pixelbot.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="includes.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="menu.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="functions.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="inputcontrol.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="utils.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
