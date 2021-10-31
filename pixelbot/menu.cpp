@@ -1,116 +1,74 @@
-﻿#include "Menu.h"
+﻿#include "includes.h"
 
-HANDLE console_handle = GetStdHandle(STD_OUTPUT_HANDLE);
+HANDLE menu::console_handle = GetStdHandle(STD_OUTPUT_HANDLE);
 bool menu::global_key = false;
 
-void menu::update_menu()
+void menu::draw()
 {
 	system("CLS");
 
+	SetConsoleTextAttribute(menu::console_handle, 112); // 112 = black with grey bg
+	cout << " [ end ] panic key " << endl << endl;
+	SetConsoleTextAttribute(menu::console_handle, NULL);
+
 	if (menu::global_key)
 	{
-		SetConsoleTextAttribute(console_handle, 10);
-		cout << "[ F4 ] -> Global key: ON" << endl << endl;
+		SetConsoleTextAttribute(menu::console_handle, 10); // 10 = green
+		cout << "[ f4 ] global key: on" << endl;
 	}
 	else
 	{
-		SetConsoleTextAttribute(console_handle, 12);
-		cout << "[ F4 ] -> Global key: OFF" << endl << endl;
+		SetConsoleTextAttribute(menu::console_handle, 12); // 12 = red
+		cout << "[ f4 ] global key: off" << endl;
 	}
 
-	if (funcs::left_hold)
+	if (macros::left_click)
 	{
-		SetConsoleTextAttribute(console_handle, 10);
-		cout << "[ CAPSLOCK ] -> Hold left click (5s delay): ON" << endl;
+		SetConsoleTextAttribute(menu::console_handle, 10);
+		cout << "[ numpad5 ] spam left click: on" << endl;
 	}
 	else
 	{
-		SetConsoleTextAttribute(console_handle, 12);
-		cout << "[ CAPSLOCK ] -> Hold left click (5s delay): OFF" << endl;
+		SetConsoleTextAttribute(menu::console_handle, 12);
+		cout << "[ numpad5 ] spam left click: off" << endl;
 	}
 
-	if (funcs::left_click)
+	if (pixelbot::debug)
 	{
-		SetConsoleTextAttribute(console_handle, 10);
-		cout << "[ MULTIPLY ] -> Spam left click (13~ cps): ON" << endl;
+		SetConsoleTextAttribute(menu::console_handle, 10);
+		cout << "[ numpad0 ] pixel bot debug: on" << endl;
 	}
 	else
 	{
-		SetConsoleTextAttribute(console_handle, 12);
-		cout << "[ MULTIPLY ] -> Spam left click (13~ cps): OFF" << endl;
-	}
-
-	if (pixel_bot::buy_bot_func)
-	{
-		SetConsoleTextAttribute(console_handle, 10);
-		cout << "[ MINUS ] -> Spawners buy bot: ON" << endl;
-	}
-	else
-	{
-		SetConsoleTextAttribute(console_handle, 12);
-		cout << "[ MINUS ] -> Spawners buy bot: OFF" << endl;
-	}
-
-	if (pixel_bot::debug)
-	{
-		SetConsoleTextAttribute(console_handle, 10);
-		cout << "[ NUMPAD0 ] -> Pixel bot debug: ON" << endl;
-	}
-	else
-	{
-		SetConsoleTextAttribute(console_handle, 12);
-		cout << "[ NUMPAD0 ] -> Pixel bot debug: OFF" << endl;
+		SetConsoleTextAttribute(menu::console_handle, 12);
+		cout << "[ numpad0 ] pixel bot debug: off" << endl;
 	}
 }
 
-void menu::key_binds()
+void menu::keybinds()
 {
 	if (GetAsyncKeyState(VK_F4) & 1)
 	{
 		menu::global_key = !menu::global_key;
 		utils::play_beep(menu::global_key);
-		menu::update_menu();
+		menu::draw();
 	}
-	else if (GetAsyncKeyState(VK_CAPITAL) & 1)
+	else if (GetAsyncKeyState(VK_NUMPAD5) & 1)
 	{
-		if (menu::global_key == false)
+		if (menu::global_key == false || pixelbot::debug == true)
 			return;
 
-		funcs::left_hold = !funcs::left_hold;
-		utils::play_beep(funcs::left_hold);
-		menu::update_menu();
-	}
-	else if (GetAsyncKeyState(VK_MULTIPLY) & 1)
-	{
-		if (menu::global_key == false)
-			return;
-
-		if (pixel_bot::debug == true)
-			return;
-
-		funcs::left_click = !funcs::left_click;
-		utils::play_beep(funcs::left_click);
-		menu::update_menu();
-	}
-	else if (GetAsyncKeyState(VK_SUBTRACT) & 1)
-	{
-		if (menu::global_key == false)
-			return;
-
-		if (pixel_bot::debug == true)
-			return;
-
-		pixel_bot::buy_bot_func= !pixel_bot::buy_bot_func;
-		utils ::play_beep(pixel_bot::buy_bot_func);
-		menu::update_menu();
+		macros::left_click = !macros::left_click;
+		utils::play_beep(macros::left_click);
+		menu::draw();
 	}
 	else if (GetAsyncKeyState(VK_NUMPAD0) & 1)
 	{
 		if (menu::global_key == false)
 			return;
 
-		pixel_bot::debug = !pixel_bot::debug;
-		utils::play_beep(pixel_bot::debug);
-		menu::update_menu();
+		pixelbot::debug = !pixelbot::debug;
+		utils::play_beep(pixelbot::debug);
+		menu::draw();
 	}
 }

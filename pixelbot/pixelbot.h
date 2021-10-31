@@ -1,10 +1,10 @@
 #pragma once
-#include "includes.h"
 
-namespace pixel_bot
+namespace pixelbot
 {
+	extern HWND target_window;
 	extern bool debug;
-	extern bool buy_bot_func;
+	extern bool example;
 
 	void run();
 }

@@ -1,9 +1,10 @@
 #pragma once
-#include "includes.h"
 
 namespace menu
 {
+	extern HANDLE console_handle;
 	extern bool global_key;
-	extern void update_menu();
-	extern void key_binds();
+
+	void draw();
+	void keybinds();
 }
