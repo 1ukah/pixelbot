@@ -6,7 +6,8 @@ void macros::thread()
 {
 	if (macros::left_click)
 	{
-		inputs::mouse::left(0);
+		inputs::mouse::click(mouse_flag::left_down, 0);
+		inputs::mouse::click(mouse_flag::left_up, 0);
 		Sleep(69);
 	}
 }

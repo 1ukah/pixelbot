@@ -21,7 +21,7 @@ void pixelbot::run()
 			GetCursorPos(&p);
 			ScreenToClient(target_window, &p);
 
-			SetConsoleTextAttribute(menu::console_handle, 11); // 11 = cyan
+			SetConsoleTextAttribute(menu::console_handle, 11); 
 			cout << "[ debug ] x: " << p.x << " | y: " << p.y << endl;
 			Sleep(1000);
 		}
@@ -35,7 +35,7 @@ void pixelbot::run()
 			COLORREF Color = GetPixel(hDC, p.x, p.y);
 			ReleaseDC(target_window, hDC);
 
-			SetConsoleTextAttribute(menu::console_handle, 11); // 11 = cyan
+			SetConsoleTextAttribute(menu::console_handle, 11); 
 			cout << "[ debug ] color: " << Color << " | rgb: ( " << (int)GetRValue(Color) << ", " << (int)GetGValue(Color) << ", " << (int)GetBValue(Color) << " )" << endl;
 			Sleep(1000);
 		}
@@ -50,11 +50,11 @@ void pixelbot::run()
 		bool all_good2 = false;
 
 		HDC hdc = GetDC(target_window);
-		COLORREF pixel = GetPixel(hdc, 955, 543);
+		COLORREF pixel = GetPixel(hdc, 1518, 240);
 		COLORREF pixel2 = GetPixel(hdc, 812, 362);
 		ReleaseDC(target_window, hdc);
 
-		COLORREF pixel_color = 1644825; 
+		COLORREF pixel_color = 6806002;
 		COLORREF pixel2_color = 1819262;
 
 		if (pixel == pixel_color) 
@@ -65,22 +65,24 @@ void pixelbot::run()
 
 		if (all_good == true)
 		{
-			int to_x = 1010; int to_y = 370;
+			int quest_x = 1559; int quest_y = 238;
 
 			RECT wrect = utils::get_wnd_rect(target_window);
-			SetCursorPos(wrect.left + to_x, wrect.top + to_y);
+			SetCursorPos(wrect.left + quest_x, wrect.top + quest_y);
 
 			Sleep(50);
-			inputs::mouse::left(0);
+			inputs::mouse::click(mouse_flag::left_down, 0);
+			inputs::mouse::click(mouse_flag::left_up, 0);
+			Sleep(2000);
 		}
 
 		if (all_good2 == true)
 		{
-			inputs::keyboard::key('t', 50);
-			inputs::keyboard::key('e', 50);
-			inputs::keyboard::key('s', 50);
-			inputs::keyboard::key('t', 50);
-			inputs::keyboard::enter(150);
+			inputs::keyboard::key('t', keyboard_flag::key_down, 0); inputs::keyboard::key('t', keyboard_flag::key_up, 0);
+			inputs::keyboard::key('e', keyboard_flag::key_down, 0); inputs::keyboard::key('e', keyboard_flag::key_up, 0);
+			inputs::keyboard::key('s', keyboard_flag::key_down, 0); inputs::keyboard::key('s', keyboard_flag::key_up, 0);
+			inputs::keyboard::key('t', keyboard_flag::key_down, 0); inputs::keyboard::key('t', keyboard_flag::key_up, 0);
+			inputs::keyboard::sm_key(sm_keys::enter, keyboard_flag::key_down, 0); inputs::keyboard::sm_key(sm_keys::enter, keyboard_flag::key_up, 0);
 			Sleep(400);
 		}
 	}

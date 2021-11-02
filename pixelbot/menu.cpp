@@ -33,6 +33,17 @@ void menu::draw()
 		cout << "[ numpad5 ] spam left click: off" << endl;
 	}
 
+	if (pixelbot::example)
+	{
+		SetConsoleTextAttribute(menu::console_handle, 10);
+		cout << "[ numpad9 ] pixel bot example: on" << endl;
+	}
+	else
+	{
+		SetConsoleTextAttribute(menu::console_handle, 12);
+		cout << "[ numpad9 ] pixel bot example: off" << endl;
+	}
+
 	if (pixelbot::debug)
 	{
 		SetConsoleTextAttribute(menu::console_handle, 10);
@@ -53,7 +64,8 @@ void menu::keybinds()
 		utils::play_beep(menu::global_key);
 		menu::draw();
 	}
-	else if (GetAsyncKeyState(VK_NUMPAD5) & 1)
+
+	if (GetAsyncKeyState(VK_NUMPAD5) & 1)
 	{
 		if (menu::global_key == false || pixelbot::debug == true)
 			return;
@@ -62,7 +74,18 @@ void menu::keybinds()
 		utils::play_beep(macros::left_click);
 		menu::draw();
 	}
-	else if (GetAsyncKeyState(VK_NUMPAD0) & 1)
+
+	if (GetAsyncKeyState(VK_NUMPAD9) & 1)
+	{
+		if (menu::global_key == false || pixelbot::debug == true)
+			return;
+
+		pixelbot::mira = !pixelbot::mira;
+		utils::play_beep(pixelbot::mira);
+		menu::draw();
+	}
+
+	if (GetAsyncKeyState(VK_NUMPAD0) & 1)
 	{
 		if (menu::global_key == false)
 			return;
