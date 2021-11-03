@@ -15,7 +15,7 @@ enum class keyboard_flag : DWORD
 };
 
 //System and Modifier keys
-enum class sm_keys : CHAR
+enum class sm_keys : int
 {
     backspace = 0x08,
     tab = 0x09,
@@ -57,39 +57,54 @@ namespace inputs
 {
     namespace keyboard
     {
-        inline void key(CHAR key_code, keyboard_flag kb_flag, int sleep_time)
+        inline void key(CHAR key_code, keyboard_flag kb_flag, int sleep_time, keyboard_flag kb_flag2)
         {
             INPUT input;
             input.type = INPUT_KEYBOARD;
             input.ki.wVk = VkKeyScanA(key_code);
-            input.ki.dwFlags = (DWORD)kb_flag;
-            input.ki.time = sleep_time;
-            SendInput(1, &input, sizeof(INPUT));
             ZeroMemory(&input, sizeof(INPUT));
+
+            input.ki.dwFlags = (DWORD)kb_flag;
+            SendInput(1, &input, sizeof(INPUT));
+
+            Sleep(sleep_time);
+
+            input.ki.dwFlags = (DWORD)kb_flag2;
+            SendInput(1, &input, sizeof(INPUT));
         }
 
-        inline void sm_key(sm_keys sm_key, keyboard_flag kb_flag, int sleep_time)
+        inline void sm_key(sm_keys sm_key, keyboard_flag kb_flag, int sleep_time, keyboard_flag kb_flag2)
         {
             INPUT input;
             input.type = INPUT_KEYBOARD;
-            input.ki.wVk = (CHAR)sm_key;
-            input.ki.dwFlags = (DWORD)kb_flag;
-            input.ki.time = sleep_time;
-            SendInput(1, &input, sizeof(INPUT));
+            input.ki.wVk = (int)sm_key;
             ZeroMemory(&input, sizeof(INPUT));
+
+            input.ki.dwFlags = (DWORD)kb_flag;
+            SendInput(1, &input, sizeof(INPUT));
+            
+            Sleep(sleep_time);
+
+            input.ki.dwFlags = (DWORD)kb_flag2;
+            SendInput(1, &input, sizeof(INPUT));
         }
     }
     
     namespace mouse
     {
-        inline void click(mouse_flag m_flag, int sleep_time)
+        inline void click(mouse_flag m_flag1, int sleep_time, mouse_flag m_flag2)
         {
             INPUT input;
             input.type = INPUT_MOUSE;
-            input.mi.dwFlags = (DWORD)m_flag;
-            input.mi.time = sleep_time;
-            SendInput(1, &input, sizeof(INPUT));
             ZeroMemory(&input, sizeof(INPUT));
+
+            input.mi.dwFlags = (DWORD)m_flag1;
+            SendInput(1, &input, sizeof(INPUT));
+
+            Sleep(sleep_time);
+
+            input.mi.dwFlags = (DWORD)m_flag2;
+            SendInput(1, &input, sizeof(INPUT));
         }
     }
 }

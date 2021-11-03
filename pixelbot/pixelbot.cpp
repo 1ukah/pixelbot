@@ -71,18 +71,17 @@ void pixelbot::run()
 			SetCursorPos(wrect.left + quest_x, wrect.top + quest_y);
 
 			Sleep(50);
-			inputs::mouse::click(mouse_flag::left_down, 0);
-			inputs::mouse::click(mouse_flag::left_up, 0);
+			inputs::mouse::click(mouse_flag::left_down, 0, mouse_flag::left_up);
 			Sleep(2000);
 		}
 
 		if (all_good2 == true)
 		{
-			inputs::keyboard::key('t', keyboard_flag::key_down, 0); inputs::keyboard::key('t', keyboard_flag::key_up, 0);
-			inputs::keyboard::key('e', keyboard_flag::key_down, 0); inputs::keyboard::key('e', keyboard_flag::key_up, 0);
-			inputs::keyboard::key('s', keyboard_flag::key_down, 0); inputs::keyboard::key('s', keyboard_flag::key_up, 0);
-			inputs::keyboard::key('t', keyboard_flag::key_down, 0); inputs::keyboard::key('t', keyboard_flag::key_up, 0);
-			inputs::keyboard::sm_key(sm_keys::enter, keyboard_flag::key_down, 0); inputs::keyboard::sm_key(sm_keys::enter, keyboard_flag::key_up, 0);
+			inputs::keyboard::key('t', keyboard_flag::key_down, 0, keyboard_flag::key_up);
+			inputs::keyboard::key('e', keyboard_flag::key_down, 0, keyboard_flag::key_up);
+			inputs::keyboard::key('s', keyboard_flag::key_down, 0, keyboard_flag::key_up);
+			inputs::keyboard::key('t', keyboard_flag::key_down, 0, keyboard_flag::key_up);
+			inputs::keyboard::sm_key(sm_keys::enter, keyboard_flag::key_down, 0, keyboard_flag::key_up);
 			Sleep(400);
 		}
 	}

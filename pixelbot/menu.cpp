@@ -80,8 +80,8 @@ void menu::keybinds()
 		if (menu::global_key == false || pixelbot::debug == true)
 			return;
 
-		pixelbot::mira = !pixelbot::mira;
-		utils::play_beep(pixelbot::mira);
+		pixelbot::example = !pixelbot::example;
+		utils::play_beep(pixelbot::example);
 		menu::draw();
 	}
 
