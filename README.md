@@ -1,7 +1,8 @@
-**!!! WARNING !!!**
+**!!! WARNING !!! - There's a lot of bad coding habits and bad code in general here.**
 
-**There's a lot of bad/scuffed stuff in here!**
 
-I initially made this for me and some friends use while we were playing on a minecraft rankup server, it was intended to buy things from the server's market automatically and to have a simple auto-clicker. After we stopped playing I didn't see any purpose for this anymore.
+Project made for learning purpose.
 
-I don't feel this is worth the time getting back and fixing all the scuffed stuff that I did, so yeah... Let's throw this here and forget about it!
+I made this for personal use while I was playing on a minecraft rankup server. It was intended to buy things from the server's market automatically and to have a simple auto-clicker.
+
+I don't feel it's worth the time getting back and fixing all the mess that I did. So yeah... Let's throw this here and forget about it!
