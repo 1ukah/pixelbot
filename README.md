@@ -1,4 +1,4 @@
-**!!! WARNING !!! - There's a lot of bad coding habits and bad code in general here.**
+**!!! WARNING !!! - There's a lot of bad coding habits in here.**
 
 
 Project made for learning purpose.
